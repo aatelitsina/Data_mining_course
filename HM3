@@ -1,0 +1,15 @@
+# Откройте файл в Питоне с помощью whith. Проитерируйтесь по строкам и проверьте каждый пароль на надежность.
+# Будем считать пароль надежным, если в нем минимум 6 символов разного регистра, есть цифры, буквы и другие символы.
+# Выведете долю надежных паролей среди всех в файле.
+# В решении могут помочь методы .isupper() , .isdigit() , .isalpha()
+import string
+correct_pas = []
+correct_word = ''
+with open('password_list.txt', 'r') as f:
+    for pas in f:
+        pas = pas.strip()
+        if len(pas)>= 6:
+            if any([char.isdigit() for char in pas]) and any([char.isalpha() for char in pas]) \
+                 and any([char.upper() for char in pas]) and any([char in string.punctuation for char in pas]):
+                    correct_pas.append(pas)
+print(correct_pas)
